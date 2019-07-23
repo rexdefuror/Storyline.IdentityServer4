@@ -1,5 +1,3 @@
-using System;
-
 namespace Storyline.IdentityServer4.Web.Models
 {
     public class ErrorViewModel
