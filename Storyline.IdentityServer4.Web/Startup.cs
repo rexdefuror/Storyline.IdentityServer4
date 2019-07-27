@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IdentityServer4;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,15 @@ namespace Storyline.IdentityServer4.Web
                 storeExpirationTime = 1;
             }
 
+            services.AddAuthentication()
+                .AddGoogle("Google", options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = Configuration["Google:ClientId"];
+                    options.ClientSecret = Configuration["Google:Secret"];
+                });
+
             services.AddIdentityServer(options =>
                 {
                     options.Caching.ClientStoreExpiration = TimeSpan.FromMinutes(storeExpirationTime);
@@ -56,7 +66,8 @@ namespace Storyline.IdentityServer4.Web
                     options.EnableTokenCleanup = true;
                     options.TokenCleanupInterval = int.Parse(Configuration["TokenCleanUpInterval"]);
                 })
-                .AddConfigurationStoreCache();
+                .AddConfigurationStoreCache()
+                .AddDeveloperSigningCredential();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +87,9 @@ namespace Storyline.IdentityServer4.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
+            app.UseIdentityServer();
 
             app.UseMvc(routes =>
             {
