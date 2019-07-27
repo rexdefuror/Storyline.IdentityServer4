@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
-using Storyline.IdentityServer4.Application.Core;
 using System;
 
 namespace Storyline.IdentityServer4.Web
@@ -57,7 +56,6 @@ namespace Storyline.IdentityServer4.Web
                     options.EnableTokenCleanup = true;
                     options.TokenCleanupInterval = int.Parse(Configuration["TokenCleanUpInterval"]);
                 })
-                .AddProfileService<ProfileService>()
                 .AddConfigurationStoreCache();
         }
 

@@ -19,9 +19,4 @@
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <ProjectReference Include="..\Storyline.IdentityServer4.Application\Storyline.IdentityServer4.Application.csproj" />
-  </ItemGroup>
-
 </Project>
