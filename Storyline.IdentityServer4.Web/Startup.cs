@@ -1,12 +1,13 @@
-﻿using IdentityServer4;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using Storyline.IdentityServer.Application.Extensions;
 using System;
 
 namespace Storyline.IdentityServer4.Web
@@ -28,6 +29,8 @@ namespace Storyline.IdentityServer4.Web
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedProto;
             });
 
+            services.ConfigureIdentityContext(Configuration);
+
             services.AddSession();
             services.AddMemoryCache();
 
@@ -44,7 +47,7 @@ namespace Storyline.IdentityServer4.Web
             services.AddAuthentication()
                 .AddGoogle("Google", options =>
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.SignInScheme = IdentityConstants.ExternalScheme;
 
                     options.ClientId = Configuration["Google:ClientId"];
                     options.ClientSecret = Configuration["Google:Secret"];
@@ -67,7 +70,8 @@ namespace Storyline.IdentityServer4.Web
                     options.TokenCleanupInterval = int.Parse(Configuration["TokenCleanUpInterval"]);
                 })
                 .AddConfigurationStoreCache()
-                .AddDeveloperSigningCredential();
+                .AddDeveloperSigningCredential()
+                .AddAspNetIdentity<IdentityUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

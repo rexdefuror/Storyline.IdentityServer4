@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storyline.IdentityServer4.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storyline.IdentityServer4.Data", "Storyline.IdentityServer4.Data\Storyline.IdentityServer4.Data.csproj", "{65752D82-78E0-4CBD-95D4-187BA01A9415}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyline.IdentityServer.Application", "Storyline.IdentityServer.Application\Storyline.IdentityServer.Application.csproj", "{4DFCB283-35D3-44AC-B1BD-4285A88EBBD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyline.Client", "Storyline.Client\Storyline.Client.csproj", "{FD33D464-0730-437A-A596-2BDF347328A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{65752D82-78E0-4CBD-95D4-187BA01A9415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65752D82-78E0-4CBD-95D4-187BA01A9415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65752D82-78E0-4CBD-95D4-187BA01A9415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DFCB283-35D3-44AC-B1BD-4285A88EBBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFCB283-35D3-44AC-B1BD-4285A88EBBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFCB283-35D3-44AC-B1BD-4285A88EBBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFCB283-35D3-44AC-B1BD-4285A88EBBD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD33D464-0730-437A-A596-2BDF347328A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD33D464-0730-437A-A596-2BDF347328A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD33D464-0730-437A-A596-2BDF347328A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD33D464-0730-437A-A596-2BDF347328A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

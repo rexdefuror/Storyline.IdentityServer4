@@ -8,21 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="3.10.10" />
-    <PackageReference Include="IdentityServer4" Version="2.5.2" />
-    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.5.2" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.5.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\Storyline.IdentityServer.Application\Storyline.IdentityServer.Application.csproj" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
 </Project>
