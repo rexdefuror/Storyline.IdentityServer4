@@ -1,5 +1,5 @@
 {
-  "ConnectionStrings": {
-    "Storyline": "Data Source=DESKTOP-BU5DEHO\\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=Storyline"
-  }
+    "ConnectionStrings": {
+        "Storyline": "Server=(localdb)\\v11.0; Database=Storyline; Integrated Security=True; MultipleActiveResultSets=true"
+    }
 }

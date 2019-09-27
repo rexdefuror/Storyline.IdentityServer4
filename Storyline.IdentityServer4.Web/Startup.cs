@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
+using Microsoft.Extensions.Hosting;
 using Storyline.IdentityServer.Application.Extensions;
 using System;
 
@@ -34,9 +34,7 @@ namespace Storyline.IdentityServer4.Web
             services.AddSession();
             services.AddMemoryCache();
 
-            services.AddMvc()
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
 
             if (!double.TryParse(Configuration["Caching:StoreExpiration"], out var storeExpirationTime))
@@ -75,7 +73,7 @@ namespace Storyline.IdentityServer4.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -91,16 +89,12 @@ namespace Storyline.IdentityServer4.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseIdentityServer();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
         }
     }
 }
